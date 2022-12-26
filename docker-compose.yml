@@ -1,0 +1,22 @@
+services:
+    ub1:
+        image: "alpine:3.17.0"
+        command: tail -F /dev/null
+        volumes:
+            - vol1:/tmp/ub1/vol1
+            - vol2:/tmp/ub1/vol2
+    ub2:
+        image: "alpine:3.17.0"
+        command: tail -F /dev/null
+        volumes:
+            - vol1:/tmp/ub2/vol1
+            - vol2:/tmp/ub2/vol2
+
+volumes:
+    vol1:
+    vol2:
+        driver: local
+        driver_opts:
+            type: none
+            device: /home/chris/docker-volumes-example/vol2/
+            o: bind
